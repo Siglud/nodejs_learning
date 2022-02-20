@@ -1,0 +1,24 @@
+{
+  "name": "nodejs_learning",
+  "version": "1.0.0",
+  "description": "learning Node Js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siglud/nodejs_learning.git"
+  },
+  "author": "siglud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Siglud/nodejs_learning/issues"
+  },
+  "homepage": "https://github.com/Siglud/nodejs_learning#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "tslint": "^6.1.3",
+    "typescript": "^4.5.5"
+  }
+}
