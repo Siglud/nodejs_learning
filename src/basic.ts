@@ -10,3 +10,13 @@ export function* createFibonacciGenerator(): IterableIterator<number> {
         [a, b] = [b, a + b]
     }
 }
+
+/**
+ * safe read property
+ * @param o object
+ * @param k keyof O
+ * @returns o[k]
+ */
+export function get<O extends object, K extends keyof O>(o: O, k: K) {
+    return o[k]
+}

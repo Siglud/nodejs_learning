@@ -1,0 +1,8 @@
+type Without<T, U> = T extends U ? never : T
+
+type A = Without<boolean | number | string, boolean>
+
+type ElementType<T> = T extends unknown[] ? T[number] : T
+type B = ElementType<number[]> // number
+
+type ElementType2<T> = T extends (infer U)[] ? U : T

@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv'
 import * as express from 'express'
 import * as basic from './basic'
 import * as file from 'fs'
+import { isMainThread, parentPort, Worker, workerData } from 'worker_threads'
 
 const app = express()
 app.use(express.json())
@@ -110,6 +111,35 @@ app.get('/file', (_, res) => {
         }
         res.send(stats)
     })
+})
+
+app.post('/worker', (req, res) => {
+    if (isMainThread) {
+        function parseJSAsync(script: string) {
+            return new Promise((resolve, reject) => {
+                const worker = new Worker('./dist/childThread.js', {
+                    workerData: script
+                })
+                worker.on('message', resolve)
+                worker.on('error', reject)
+                worker.on('exit', (code) => {
+                    if (code !== 0) {
+                        reject(new Error(`Worker stopped with exit code ${code}`))
+                    }
+                })
+            })
+        }
+        const caller = async() => {
+            console.log('start worker')
+            const rex = await parseJSAsync(req.body)
+            res.send(`Response from child ${rex}`)
+        }
+
+        caller();
+
+    } else {
+        res.send('Not in Main')
+    }
 })
 
 const server = app.listen(3000, () => console.log('Server ready'))

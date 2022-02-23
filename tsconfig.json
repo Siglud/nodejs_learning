@@ -1,12 +1,19 @@
 {
     "compilerOptions": {
-        "lib": ["es2021.intl"],
+        "lib": ["es2021.intl", "WebWorker"],
         "module": "commonjs",
         "outDir": "dist",
         "sourceMap": true,
+        "declaration": true,
         "strict": true,
         "noImplicitAny": true,
+        "keyofStringsOnly": true,
         "target": "ES2021"
     },
-    "include": ["src"]
+    "include": ["src"],
+    "exclude": [
+        "./test/",
+        "./node_modules/",
+        "./dist/"
+    ]
 }
