@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv'
 import * as express from 'express'
 import * as basic from './basic'
 import * as file from 'fs'
-import { isMainThread, parentPort, Worker, workerData } from 'worker_threads'
+import { isMainThread, Worker} from 'worker_threads'
 
 const app = express()
 app.use(express.json())
@@ -42,7 +42,7 @@ app.get('/event', (_, res) => {
     const foo = () => {
         console.log('foo')
         setTimeout(bar, 0)
-        new Promise((resolve, reject) => {
+        new Promise((resolve, _reject) => {
             resolve('should be right after baz, before bar')
         }).then(rt => console.log(rt))
         .then(__ => res.send('done'))
