@@ -16,4 +16,14 @@ describe('checkThrow', () => {
             }
         })
     })
+
+    describe('checkNull', () => {
+        it('should null', () => {
+            type E = {
+                node?: string
+            }
+            let x: E = {}
+            console.log(x?.node);
+        });
+    })
 })
