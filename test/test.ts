@@ -20,4 +20,11 @@ describe('basic', () => {
             expect(utils.get(t, 'b')).to.equal('x')
         })
     })
+
+    describe('#if else', () => {
+        let x: string | undefined;
+        it('should be 0', () => {
+            expect(x ?? '2').to.equal('2')
+        });
+    })
 })
