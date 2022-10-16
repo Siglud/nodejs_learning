@@ -1,0 +1,7 @@
+{
+    "extension": ["ts"],
+    "require": "ts-node/register",
+    "ui": "bdd",
+    "watch-files": ["test/**/*.test.ts"],
+    "timeout": 2000
+}

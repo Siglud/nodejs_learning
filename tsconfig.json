@@ -8,7 +8,8 @@
         "strict": true,
         "noImplicitAny": true,
         "keyofStringsOnly": true,
-        "target": "ES2021"
+        "target": "ESNext",
+        "moduleResolution": "node",
     },
     "include": ["src"],
     "exclude": [
